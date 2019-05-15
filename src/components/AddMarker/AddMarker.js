@@ -15,7 +15,7 @@ function AddMarker({ error, onAddMarker }) {
           type="text"
           value={ locationName }
           onChange={ (e) => setLocationName(e.target.value) }
-          placeholder='Location Name' />
+          placeholder='Enter your address here.' />
           <span className="add-marker__input-error">{error}</span>
       </div>
       <button onClick={_handleOnSave}

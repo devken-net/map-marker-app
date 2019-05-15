@@ -1,6 +1,11 @@
 .card {
   display: flex;
   margin: 1em;
+  width: 45%;
+}
+.card .mdl-card {
+  min-width: 250px;
+  width: 100%;
 }
 .card__title.mdl-card__title {
   align-items: flex-start;

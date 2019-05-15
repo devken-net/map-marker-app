@@ -25,6 +25,10 @@ function App() {
         if(response) {
           setMarkers(response);
         }
+      })
+      .catch((error) => {
+        console.error(error);
+        alert('Something went wrong.');
       });
   }, []);
 

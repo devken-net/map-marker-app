@@ -6,6 +6,7 @@ const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 
 /**
  * Generate query string parameter
+ * TODO: move this method to utils since this is reusable.
  * @param {Object} params
  */
 const generateQueryParams = (params) => {
@@ -35,7 +36,7 @@ const getGeoLocation = (address, callback) => {
     address,
   };
   const url = generateGoogleURL({ url: GOOGLE_API, params });
-  console.log(url);
+  console.log('GOOGLE_URL:' ,url);
   request({ url, json: true }, (error, { body }) => {
     if (error) {
       callback({

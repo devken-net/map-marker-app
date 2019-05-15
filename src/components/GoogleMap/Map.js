@@ -34,7 +34,7 @@ function Map({ markers }) {
         markers.map(({location}) => addMarker(location, map, google));
       }
     }
-  }, []);
+  }, [markers]);
 
   return (
     <div id="map" className="map">

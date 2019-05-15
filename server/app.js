@@ -12,6 +12,7 @@ const {
 const app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+app.disable('etag'); // To temporary disable 304 return.
 
 app.get('/api/locations*', (req, res) => {
   getLocations((response) => {
@@ -58,4 +59,6 @@ app.put('/api/location*', [
   });
 });
 
-app.listen(process.env.PORT || 3001);
+console.log('Listening at PORT: ', process.env.API_PORT);
+
+app.listen(process.env.API_PORT || 3001);
