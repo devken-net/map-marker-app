@@ -1,10 +1,18 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Get started
 
+This project requires atleast `node ^8.x.x`.
+
+### Setup
 In the project directory, you can run:
 
-### `npm start`
+```bash
+npm install
+```
+
+Before you start the project fill the `API_KEY`'s in `.env` file.
+
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
