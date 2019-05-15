@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card } from '../Card';
+import { Marker } from '../Marker';
 
 import './Markers.css';
 
@@ -8,7 +8,7 @@ function Markers({ markers, onDeleteMark, onUpdateMarker }) {
   return (
     <div className="markers">
     {markers.map((mark) => (
-      <Card key={mark.id} data={mark}
+      <Marker key={mark.id} data={mark}
         onDelete={onDeleteMark}
         onSave={onUpdateMarker} />
     ))}

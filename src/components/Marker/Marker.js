@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import './Card.css';
+import './Marker.css';
 import PropTypes from 'prop-types';
 
-const Card = ({ data, onDelete, onSave }) => {
+const Marker = ({ data, onDelete, onSave }) => {
   const [isEdit, setEdit] = useState(false);
   const [tempName, setName] = useState('');
 
@@ -65,11 +65,11 @@ const Card = ({ data, onDelete, onSave }) => {
     </div>
   );
 }
-Card.defaultProps = {
+Marker.defaultProps = {
   data: {},
 };
-Card.propTypes = {
+Marker.propTypes = {
   data: PropTypes.object.isRequired,
 };
 
-export { Card };
+export { Marker };
