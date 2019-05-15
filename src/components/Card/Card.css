@@ -1,0 +1,55 @@
+.card {
+  display: flex;
+  margin: 1em;
+}
+.card__title.mdl-card__title {
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-bottom: 0;
+}
+.card__title-text.mdl-card__title-text{
+  align-self: flex-start;
+  color: #1565c0;
+  font-weight: 700;
+}
+.card__title-edit-input.mdl-textfield {
+  padding: 0;
+}
+.card__title-edit-input input{
+  color: #1565c0;
+  font-size: 24px;
+  font-weight: 700;
+}
+.card__sub-title {
+  color: #757575;
+  margin: 0.3em 0 0;
+}
+.card__body.mdl-card__supporting-text {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0;
+}
+.card__body-row {
+  display: flex;
+  flex-direction: row;
+  padding-top: 1em;
+}
+.card__body-col {
+  display: flex;
+  flex-grow: 1;
+}
+.col-left {
+  width: 40%;
+}
+.col-right {
+  width: 60%;
+}
+.card__actions {
+  align-content: space-between;
+  display: flex;
+  justify-content: space-between;
+}
+.card__actions-button.mdl-button--raised.mdl-button--colored {
+  background: #1565c0;
+}
