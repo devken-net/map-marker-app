@@ -11,66 +11,42 @@ In the project directory, you can run:
 npm install
 ```
 
-Before you start the project fill the `API_KEY`'s in `.env` file.
+Before you start the project fill the `*_API_KEY`'s in `.env` file.
 
+```text
+REACT_APP_GOOGLE_API_KEY=*********************
+GOOGLE_API_KEY=*********************
+MAPBOX_API_KEY==*********************
+```
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Then you can run `npm run dev` this will run the app in the development mode and run our backend api in `PORT:3001`.<br>
+And we setup proxy server to access api we can open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## TODO
 
-### `npm test`
+* [ ] Add unit tests
+* [ ] Separate Front-end and Back-end in separate repos
+* [ ] Fix inline TODO's
+* [ ] Setup Offline support page.
+* [ ] Convert to WebComponents all reusable components.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Frontend Design
 
-### `npm run build`
+For this project I didn't have the luxury of time to set this project configurations same as my large scale applications that is why I opt-out to use `create-react-app` for faster development but less control (unless I'll execute the `npm run eject`).
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+First I used `material-design-lite` to have a simple and lightweight styles for our components.
+Since `material-design-lite` doesn't have grid system and `css-grid` is not yet supported in most major browsers I used `flex` for now to handle our scaffold.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+I also created a couple of reusable components for this app. My plan is to make it as a WebComponent so that we could minimize side-effects of other components and make more independent it since I haven't tried it yet with react before I'll leave it as is for now.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+I also used vanilla css over other `css-in-js` and I love to write codes like how I write as plain css/js because technologies move so fast in frontend, all codes that I wrote today will be legacy codes in 3mos or less. But by writing it to be more like *vanilla css/js* I could make my code future proof and not dependent to frameworks. Which could be beneficial for me coz I would have less work for migration to upgrade to other version or frameworks and less work means more for the company. I've seen startups that was killed because of legacy codes and that's the thing we wouldn't want to happen.
 
-### `npm run eject`
+## Guideline Questions
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. How do you handle configuration values? What if those values change?
+    > Usually we put configuration values in different environment variables files. If those values change we will just rebuilt a new docker image with the new environment variables.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+2. What happens if we encounter an error with the third party API-integration?
+3. Will it also break our application, or they will handled accordingly?
+4. What if we change our third-party geocoder API to another one? How can we make it seamless as possible?
+    > Alright. I really love this questions. Based on my experience we should not trust any third-party api's. In this project I applied the pluggable architecture that use in our apps. In pluggable architecture we develop core service (which in this project will be found in [./server/api/locations.js](./server/api/locations.js)) and also [third-party api adapter](./server/api/google-api-adapter.js). Third party adapter should always anticipate scenarios failure of third-party api's and at the same time configure it response to what our app needs. There are different ways to make applications resilient or dependent on third party api's in this project I just return a simple error message following standard response. I also created another adapter for different third-party API that would return same DTO format the we need for our application.
