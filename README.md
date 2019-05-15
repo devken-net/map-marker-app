@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+![](demo.gif)
+
 ## Get started
 
 This project requires atleast `node ^8.x.x`.
