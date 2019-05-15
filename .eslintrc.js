@@ -1,6 +1,6 @@
 module.exports = {
-  extends: ['eslint:recommended', 'airbnb-base', 'plugin:import/errors'],
-  plugins: ['html', 'import'],
+  extends: ['eslint:recommended', 'airbnb-base', 'plugin:import/errors', 'plugin:react/recommended'],
+  plugins: ['html', 'import', 'react'],
   env: {
     browser: true,
     es6: true,
@@ -10,6 +10,7 @@ module.exports = {
     ecmaVersion: 2018,
     ecmaFeatures: {
       arrowFunctions: true,
+      jsx: true,
     },
     sourceType: 'module',
   },
@@ -27,6 +28,7 @@ module.exports = {
     // less code changes when adding or removing parameters
     'arrow-parens': ['error', 'always'],
     // compact form allows better readability
-    'max-len': ['error', { code: 80, ignoreStrings: true }]
+    'max-len': ['error', { code: 80, ignoreStrings: true }],
+    'react/jsx-uses-react': 1
   }
 };
