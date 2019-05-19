@@ -20,7 +20,7 @@ app.get('/api/locations*', (req, res) => {
   });
 });
 
-app.delete('/api/location*', [
+app.delete('/api/locations*', [
   check('id').isUUID(4),
   sanitize('id').toString().trim().escape(),
 ], (req, res) => {
@@ -31,7 +31,7 @@ app.delete('/api/location*', [
   });
 });
 
-app.post('/api/location*', [
+app.post('/api/locations*', [
   check('name').isString(),
   sanitize('name').toString().trim().escape(),
 ], (req, res) => {
@@ -42,7 +42,7 @@ app.post('/api/location*', [
   });
 });
 
-app.put('/api/location*', [
+app.put('/api/locations*', [
   check('id').isUUID(4),
   check('name').isString(),
   check('fullName').isString(),
@@ -59,6 +59,6 @@ app.put('/api/location*', [
   });
 });
 
-console.log('Listening at PORT: ', process.env.API_PORT);
+console.log('API runs at PORT: ', process.env.API_PORT);
 
 app.listen(process.env.API_PORT || 3001);

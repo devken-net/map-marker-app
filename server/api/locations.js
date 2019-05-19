@@ -1,11 +1,14 @@
-// TODO: Get geocode adapter into env variable for easier configuration.
-// const geocode = require('./mapbox-api-adapter');
-const geocode = require('./google-api-adapter');
 const store = require('./locations-store-connector');
+let geocodeApi;
+if(process.env.GEOCODE_API === 'MAPBOX_API') {
+  geocodeApi = require('./mapbox-api-adapter');
+} else {
+  geocodeApi = require('./google-api-adapter');
+}
 
 
 const addLocation = (address, callback) => {
-  geocode(address, (res) => {
+  geocodeApi(address, (res) => {
     let response;
     if(res.result) {
       response = store.addLocation(res.response);
