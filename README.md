@@ -31,6 +31,30 @@ And we setup proxy server to access api we can open [http://localhost:3000](http
 * [x] Fix inline TODO's
 * [x] Setup Offline support page.
 
+## Folder Structure
+
+Currently I just place Front-end and Back-end in same repository for faster development.
+
+```
+| // Backend APP
+|-----server
+|       |-----api
+|       |      |------google-api-adapter.js // API adapter for third-party API's
+|       |      |------mapbox-api-adapter.js
+|       |      |------locations.js // core API for address
+|       |      |------locations-store-connector.js // Database connector
+|       |
+|       |-----store/location.json // serves as database
+|
+| // Frontend App
+|-------src
+|        |-----actions // holds all actions to connect to API
+|        |-----assets
+|        |-----components // holds all resusable components
+|        |-----store // holds global-hooks that serves as redux
+|        |-----App.js // serves as HOC for this project
+```
+
 ## Frontend Design
 
 For this project I didn't have the luxury of time to set this project configurations same as my large scale applications that is why I opt-out to use `create-react-app` for faster development.
