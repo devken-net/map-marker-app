@@ -26,22 +26,23 @@ And we setup proxy server to access api we can open [http://localhost:3000](http
 
 ## TODO
 
-* [ ] Add unit tests
+* [x] Add unit tests
 * [ ] Separate Front-end and Back-end in separate repos
-* [ ] Fix inline TODO's
-* [ ] Setup Offline support page.
-* [ ] Convert to WebComponents all reusable components.
+* [x] Fix inline TODO's
+* [x] Setup Offline support page.
 
 ## Frontend Design
 
-For this project I didn't have the luxury of time to set this project configurations same as my large scale applications that is why I opt-out to use `create-react-app` for faster development but less control (unless I'll execute the `npm run eject`).
+For this project I didn't have the luxury of time to set this project configurations same as my large scale applications that is why I opt-out to use `create-react-app` for faster development.
 
 First I used `material-design-lite` to have a simple and lightweight styles for our components.
 Since `material-design-lite` doesn't have grid system and `css-grid` is not yet supported in most major browsers I used `flex` for now to handle our scaffold.
 
 I also created a couple of reusable components for this app. My plan is to make it as a WebComponent so that we could minimize side-effects of other components and make more independent it since I haven't tried it yet with react before I'll leave it as is for now.
 
-I also used vanilla css over other `css-in-js` and I love to write codes like how I write as plain css/js because technologies move so fast in frontend, all codes that I wrote today will be legacy codes in 3mos or less. But by writing it to be more like *vanilla css/js* I could make my code future proof and not dependent to frameworks. Which could be beneficial for me coz I would have less work for migration to upgrade to other version or frameworks and less work means more for the company. I've seen startups that was killed because of legacy codes and that's the thing we wouldn't want to happen.
+I also maximize the use of react-hooks to replace redux but still can follow FLUX architecture. Since as I can see react-hooks is so powerful and more close to plain javascript I just thought it is more suitable to use it in a small project like this than adding an overhead for redux.
+
+I also write most of the component close to how I write plain html/css/js because technologies move so fast in frontend, all codes that I wrote today will be legacy codes in 3mos or less. But by writing it to be more like *vanilla css/js* I could make my code future proof and not dependent to any frameworks. Which could be beneficial for me coz I would have less work for migration to upgrade to newer version or frameworks in time. And this means more for the company since the company won't spend time and money working on both legacy and migration codes. I've seen startups that was killed by legacy codes and that is the thing we wouldn't want to happen.
 
 ## Guideline Questions
 
