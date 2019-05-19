@@ -1,6 +1,6 @@
 module.exports = {
   extends: ['eslint:recommended', 'airbnb-base', 'plugin:import/errors', 'plugin:react/recommended'],
-  plugins: ['html', 'import', 'react'],
+  plugins: ['html', 'import', 'react', 'react-hooks'],
   env: {
     browser: true,
     es6: true,
@@ -29,6 +29,8 @@ module.exports = {
     'arrow-parens': ['error', 'always'],
     // compact form allows better readability
     'max-len': ['error', { code: 80, ignoreStrings: true }],
-    'react/jsx-uses-react': 1
+    'react/jsx-uses-react': 1,
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn'
   }
 };
