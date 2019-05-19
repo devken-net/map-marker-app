@@ -1,25 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Marker } from '../Marker';
+import useGlobal from "../../store";
 
 import './Markers.css';
 
-function Markers({ markers, onDeleteMark, onUpdateMarker }) {
+function Markers() {
+  const [globalState] = useGlobal();
+  const { markers } = globalState;
+
   return (
     <div className="markers">
     {markers.map((mark) => (
-      <Marker key={mark.id} data={mark}
-        onDelete={onDeleteMark}
-        onSave={onUpdateMarker} />
+      <Marker key={mark.id} data={mark} />
     ))}
     </div>
   );
 }
-Markers.defaultProps = {
-  markers: [],
-};
-Markers.propTypes = {
-  markers: PropTypes.array.isRequired,
-};
 
 export { Markers };

@@ -1,20 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import './Marker.css';
 import PropTypes from 'prop-types';
+import useGlobal from "../../store";
+import './Marker.css';
 
-const Marker = ({ data, onDelete, onSave }) => {
+const Marker = ({ data }) => {
+  const globalActions = useGlobal()[1];
   const [isEdit, setEdit] = useState(false);
   const [tempName, setName] = useState('');
 
   useEffect(() => {
     setName(data.name);
+
+    // TODO: Fix cleanup
+    return () => { console.log("componentWillUnmount"); }
   }, [data]);
 
-  const _handleButtonClick = (e) => {
+  const _handleButtonClick = () => {
+    // istanbul ignore else
     if(isEdit) {
-      onSave({ ...data, name: tempName });
+      globalActions.updateMarker({ ...data, name: tempName });
     }
     setEdit(!isEdit);
+  }
+
+  // Display non if data is empty
+  if (!data.id) {
+    return null;
   }
 
   return (
@@ -50,12 +61,13 @@ const Marker = ({ data, onDelete, onSave }) => {
           </div>
         </div>
         <div className="card__actions mdl-card__actions mdl-card--border">
-          <button 
+          <button id="deleteButton"
             className="card__actions-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
-            onClick={() => onDelete(data.id)}>
+            onClick={() => globalActions.deleteMarker(data.id)}>
             DELETE
           </button>
-          <button className="card__actions-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
+          <button id="editButton" 
+            className="card__actions-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
             onClick={_handleButtonClick}>
             { isEdit ? 'SAVE' : 'EDIT' }
           </button>
